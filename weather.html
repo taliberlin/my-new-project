@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <script
+      src="https://kit.fontawesome.com/3ca56c3a4d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nunito"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="weather.css" />
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <br />
+      <form id="search-bar">
+        <div class="row search">
+          <div class="col search">
+            <input
+              type="text"
+              placeholder="Enter city..."
+              class="form-control"
+              autocomplete="off"
+              id="search-input"
+            />
+          </div>
+          <div class="col search-btn">
+            <input type="submit" value="Search" class="btn btn-primary" />
+            <input
+              type="submit"
+              value="Current Location"
+              class="btn btn-primary"
+              id="current-location"
+            />
+          </div>
+        </div>
+      </form>
+      <br />
+      <br />
+      <div class="row current-city">
+        <div class="col-7 today">
+          <br />
+          <div class="row today-information">
+            <div class="col-3 today-info">
+              <div class="curr-day" id="day-of-week">Monday</div>
+              <div class="date" id="date">11/21/2022</div>
+              <div class="time" id="time">15:55</div>
+            </div>
+            <div class="col-9 city" id="city">Vancouver</div>
+          </div>
+          <br />
+          <br />
+          <div class="row temp">
+            <div class="col-3 temp">
+              <span class="curr-temp" id="curr-temp">19</span>
+              <span class="temp-units" id="temp-units">
+                <a href="#" id="celsius">°C</a> |
+                <a href="#" id="fahrenheit">°F</a>
+              </span>
+            </div>
+            <div class="col-9 today-icon-conditions">
+              <i class="fa-solid fa-cloud-sun-rain"></i>
+              <div class="conditions" id="conditions">Showers</div>
+            </div>
+          </div>
+          <br />
+          <div class="row curr-h-l">
+            <div class="col curr-h-l-feels-like">
+              <div class="feels-like" id="feels-like">Feels like: 12°</div>
+              <div class="curr-high-low">
+                <span id="curr-high"> 20° </span>
+                /
+                <span id="curr-low">11°</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="col-5 card">
+          <div class="card-header">Daily Forecast</div>
+          <div class="card-body">
+            <div class="row tues">
+              <div class="col-5 weekday">Tuesday</div>
+              <div class="col-4">19° / 10°</div>
+              <div class="col-3 forecast">
+                <i class="fa-solid fa-cloud-sun-rain"></i>
+              </div>
+            </div>
+            <br />
+            <div class="row wed">
+              <div class="col-5 weekday">Wednesday</div>
+              <div class="col-4">19° / 10°</div>
+              <div class="col-3 forecast">
+                <i class="fa-solid fa-cloud-sun"></i>
+              </div>
+            </div>
+            <br />
+            <div class="row thurs">
+              <div class="col-5 weekday">Thursday</div>
+              <div class="col-4">19° / 10°</div>
+              <div class="col-3 forecast">
+                <i class="fa-solid fa-cloud-sun"></i>
+              </div>
+            </div>
+            <br />
+            <div class="row fri">
+              <div class="col-5 weekday">Friday</div>
+              <div class="col-4">19° / 10°</div>
+              <div class="col-3 forecast">
+                <i class="fa-solid fa-wind"></i>
+              </div>
+            </div>
+            <br />
+            <div class="row sat">
+              <div class="col-5 weekday">Saturday</div>
+              <div class="col-4">19° / 10°</div>
+              <div class="col-3 forecast">
+                <i class="fa-solid fa-cloud-showers-heavy"></i>
+              </div>
+            </div>
+            <br />
+            <div class="row sun">
+              <div class="col-5 weekday">Sunday</div>
+              <div class="col-4">19° / 10°</div>
+              <div class="col-3 forecast">
+                <i class="fa-solid fa-cloud-sun"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="weather.js"></script>
+  </body>
+</html>

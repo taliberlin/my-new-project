@@ -1,0 +1,103 @@
+body {
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  min-height: 100vh;
+}
+.container {
+  max-width: 80%;
+}
+.btn {
+  background-color: #679347;
+  border-color: #679347;
+  position: relative;
+  right: 15px;
+  box-shadow: 2px 2px 5px #b29b8a;
+}
+.btn-primary {
+  --bs-btn-bg: #527937;
+  --bs-btn-border-color: #527937;
+  --bs-btn-hover-bg: #527937;
+  --bs-btn-hover-border-color: #527937;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-bg: #527937;
+  --bs-btn-active-border-color: #527937;
+  --bs-btn-disabled-bg: #527937;
+  --bs-btn-disabled-border-color: #527937;
+}
+.btn:hover {
+  background-color: #527937;
+  border-color: #527937;
+}
+.today {
+  padding: 1rem 1rem;
+  background: transparent;
+  color: #46662f;
+  min-width: 0;
+  position: relative;
+  bottom: 6px;
+}
+
+.city {
+  font-weight: 900;
+  font-size: 40px;
+  position: relative;
+  top: 48px;
+  text-transform: capitalize;
+}
+.conditions {
+  text-transform: capitalize;
+}
+.curr-day,
+.curr-high-low {
+  font-size: 18px;
+}
+.curr-h-l-feels-like {
+  position: relative;
+  bottom: 20px;
+}
+.conditions {
+  font-size: 20px;
+}
+
+.city,
+.today-icon-conditions {
+  text-align: center;
+}
+
+.temp {
+  position: relative;
+  top: 5px;
+}
+
+.curr-temp {
+  font-size: 47px;
+  position: relative;
+  top: 25px;
+}
+
+.today-icon-conditions {
+  font-size: 80px;
+  position: relative;
+}
+
+.card {
+  background: transparent;
+  max-width: 70%;
+  color: #46662f;
+  position: relative;
+  bottom: 15px;
+  border: transparent;
+  text-align: center;
+}
+.card-header {
+  text-align: center;
+  font-weight: 900;
+  background-color: transparent;
+}
+
+.forecast {
+  font-size: 25px;
+}
+.container {
+  max-width: 70%;
+}
