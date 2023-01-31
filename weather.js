@@ -108,7 +108,6 @@ function changeToCurrentLocation(position) {
   let feelsLikeElement = document.querySelector("#feels-like");
   let feelsLike = Math.round(position.data.main.feels_like);
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
-  console.log(position.data.main.humidity);
   let humidity = position.data.main.humidity;
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
