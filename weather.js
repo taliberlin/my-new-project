@@ -64,6 +64,7 @@ function changeTemperature(response) {
 }
 function searchCity(event) {
   event.preventDefault();
+  dateTime();
   let city = document.querySelector("#city");
   let cityInput = document.querySelector("#search-input");
   cityInput.value.trim();
@@ -83,6 +84,7 @@ function searchCity(event) {
   });
 }
 function changeToCurrentLocation(position) {
+  dateTime();
   let currentCityElement = document.querySelector("#city");
   let currentCity = position.data.name;
   currentCityElement.innerHTML = `${currentCity}`;
