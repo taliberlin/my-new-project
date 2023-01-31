@@ -62,6 +62,13 @@ function changeTemperature(response) {
   let feelsLike = Math.round(response.data.main.feels_like);
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
 }
+function convertToCoords(response) {
+  let latitude = response.data[0].lat;
+  let longitude = response.data[0].lon;
+  let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
+  let apiUrlCoords = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrlCoords).then(changeTemperature);
+}
 function searchCity(event) {
   event.preventDefault();
   dateTime();
@@ -75,13 +82,7 @@ function searchCity(event) {
   }
   let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
   let apiUrlCity = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&appid=${apiKey}`;
-  axios.get(apiUrlCity).then(function convertToCoords(response) {
-    let latitude = response.data[0].lat;
-    let longitude = response.data[0].lon;
-    let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
-    let apiUrlCoords = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrlCoords).then(changeTemperature);
-  });
+  axios.get(apiUrlCity).then(convertToCoords);
 }
 function changeToCurrentLocation(position) {
   dateTime();
@@ -94,7 +95,6 @@ function changeToCurrentLocation(position) {
   let currentConditionsElement = document.querySelector("#conditions");
   let currConditions = position.data.weather[0].description;
   currentConditionsElement.innerHTML = `${currConditions}`;
-  console.log(position);
   let currentTempHighElement = document.querySelector("#curr-high");
   let currentTempHigh = Math.round(position.data.main.temp_max);
   currentTempHighElement.innerHTML = `${currentTempHigh}°`;
