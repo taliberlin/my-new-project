@@ -46,12 +46,16 @@ function dateTime() {
   time.innerHTML = `${hours}:${minutes}`;
 }
 function changeTemperature(response) {
+  dateTime();
   let currentTemperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#curr-temp");
   temperatureElement.innerHTML = `${currentTemperature}`;
   let currentConditions = response.data.weather[0].description;
   let conditionsElement = document.querySelector("#conditions");
   conditionsElement.innerHTML = `${currentConditions}`;
+  let city = document.querySelector("#city");
+  let cityInput = document.querySelector("#search-input");
+  city.innerHTML = cityInput.value;
   let currentTempHighElement = document.querySelector("#curr-high");
   let currentTempHigh = Math.round(response.data.main.temp_max);
   currentTempHighElement.innerHTML = `${currentTempHigh}°`;
@@ -74,18 +78,15 @@ function convertToCoords(response) {
 }
 function searchCity(event) {
   event.preventDefault();
-  dateTime();
-  let city = document.querySelector("#city");
   let cityInput = document.querySelector("#search-input");
   cityInput.value.trim();
   if (cityInput.value === "" || cityInput.value === " ") {
     city.innerHTML = `Please enter city...`;
   } else {
-    city.innerHTML = `${cityInput.value}`;
+    let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
+    let apiUrlCity = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&appid=${apiKey}`;
+    axios.get(apiUrlCity).then(convertToCoords);
   }
-  let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
-  let apiUrlCity = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&appid=${apiKey}`;
-  axios.get(apiUrlCity).then(convertToCoords);
 }
 function changeToCurrentLocation(position) {
   dateTime();
