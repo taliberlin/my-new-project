@@ -61,6 +61,9 @@ function changeTemperature(response) {
   let feelsLikeElement = document.querySelector("#feels-like");
   let feelsLike = Math.round(response.data.main.feels_like);
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
+  let humidity = response.data.main.humidity;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = `Humidity: ${humidity}%`;
 }
 function convertToCoords(response) {
   let latitude = response.data[0].lat;
@@ -104,6 +107,10 @@ function changeToCurrentLocation(position) {
   let feelsLikeElement = document.querySelector("#feels-like");
   let feelsLike = Math.round(position.data.main.feels_like);
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
+  console.log(position.data.main.humidity);
+  let humidity = position.data.main.humidity;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = `Humidity: ${humidity}%`;
 }
 function receiveCurrentPosition(position) {
   let latitude = position.coords.latitude;
