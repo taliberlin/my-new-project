@@ -84,7 +84,7 @@ function searchCity(event) {
     city.innerHTML = `Please enter city...`;
   } else {
     let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
-    let apiUrlCity = `http://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&appid=${apiKey}`;
+    let apiUrlCity = `https://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&appid=${apiKey}`;
     axios.get(apiUrlCity).then(convertToCoords);
   }
 }
