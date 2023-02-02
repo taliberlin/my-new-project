@@ -2,9 +2,12 @@ body {
   font-family: "Nunito", Arial, Helvetica, sans-serif;
   background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
   min-height: 100vh;
+  max-width: 100vh;
 }
 .container {
-  max-width: 80%;
+  min-width: 130%;
+  display: block;
+  margin: auto 200px;
 }
 .btn {
   background-color: #679347;
@@ -101,5 +104,5 @@ body {
 }
 .source-code {
   position: relative;
-  left: 200px;
+  left: 215px;
 }
