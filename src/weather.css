@@ -78,7 +78,6 @@ body {
 
 .today-icon-conditions {
   font-size: 80px;
-  position: relative;
 }
 
 .card {
@@ -103,4 +102,8 @@ body {
 .source-code {
   position: relative;
   left: 209px;
+}
+.today-icon {
+  position: relative;
+  bottom: 12px;
 }

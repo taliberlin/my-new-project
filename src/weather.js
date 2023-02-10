@@ -47,33 +47,38 @@ function dateTime() {
 }
 function changeTemperature(response) {
   dateTime();
-  let currentTemperature = Math.round(response.data.main.temp);
+  let currentTemperature = Math.round(response.data.temperature.current);
   let temperatureElement = document.querySelector("#curr-temp");
   temperatureElement.innerHTML = `${currentTemperature}`;
-  let currentConditions = response.data.weather[0].description;
+  let currentConditions = response.data.condition.description;
   let conditionsElement = document.querySelector("#conditions");
   conditionsElement.innerHTML = `${currentConditions}`;
   let city = document.querySelector("#city");
-  let cityInput = document.querySelector("#search-input");
-  city.innerHTML = cityInput.value;
-  let currentTempHighElement = document.querySelector("#curr-high");
-  let currentTempHigh = Math.round(response.data.main.temp_max);
-  currentTempHighElement.innerHTML = `${currentTempHigh}°`;
-  let currentTempLowElement = document.querySelector("#curr-low");
-  let currentTempLow = Math.round(response.data.main.temp_min);
-  currentTempLowElement.innerHTML = `${currentTempLow}°`;
+  city.innerHTML = response.data.city;
+  //let currentTempHighElement = document.querySelector("#curr-high");
+  //let currentTempHigh = Math.round(response.data.main.temp_max);
+  //currentTempHighElement.innerHTML = `${currentTempHigh}°`;
+  //let currentTempLowElement = document.querySelector("#curr-low");
+  //let currentTempLow = Math.round(response.data.main.temp_min);
+  // currentTempLowElement.innerHTML = `${currentTempLow}°`;
   let feelsLikeElement = document.querySelector("#feels-like");
-  let feelsLike = Math.round(response.data.main.feels_like);
+  let feelsLike = Math.round(response.data.temperature.feels_like);
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
-  let humidity = response.data.main.humidity;
+  let humidity = response.data.temperature.humidity;
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
+  let iconElement = document.querySelector("#today-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.condition.description);
 }
 function convertToCoords(response) {
-  let latitude = response.data[0].lat;
-  let longitude = response.data[0].lon;
-  let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
-  let apiUrlCoords = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let latitude = response.data.coordinates.latitude;
+  let longitude = response.data.coordinates.longitude;
+  let apiKey = "o599f3bbe3f722tbacc3ebf3032624a0";
+  let apiUrlCoords = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrlCoords).then(changeTemperature);
 }
 function searchCity(event) {
@@ -83,40 +88,46 @@ function searchCity(event) {
   if (cityInput.value === "" || cityInput.value === " ") {
     city.innerHTML = `Please enter city...`;
   } else {
-    let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
-    let apiUrlCity = `https://api.openweathermap.org/geo/1.0/direct?q=${cityInput.value}&appid=${apiKey}`;
+    let apiKey = "o599f3bbe3f722tbacc3ebf3032624a0";
+    let apiUrlCity = `https://api.shecodes.io/weather/v1/forecast?query=${cityInput.value}&key=${apiKey}`;
     axios.get(apiUrlCity).then(convertToCoords);
   }
 }
 function changeToCurrentLocation(position) {
   dateTime();
   let currentCityElement = document.querySelector("#city");
-  let currentCity = position.data.name;
+  let currentCity = position.data.city;
   currentCityElement.innerHTML = `${currentCity}`;
   let currentTempElement = document.querySelector("#curr-temp");
-  let currentTemp = Math.round(position.data.main.temp);
+  let currentTemp = Math.round(position.data.temperature.current);
   currentTempElement.innerHTML = `${currentTemp}`;
   let currentConditionsElement = document.querySelector("#conditions");
-  let currConditions = position.data.weather[0].description;
+  let currConditions = position.data.condition.description;
   currentConditionsElement.innerHTML = `${currConditions}`;
-  let currentTempHighElement = document.querySelector("#curr-high");
-  let currentTempHigh = Math.round(position.data.main.temp_max);
-  currentTempHighElement.innerHTML = `${currentTempHigh}°`;
-  let currentTempLowElement = document.querySelector("#curr-low");
-  let currentTempLow = Math.round(position.data.main.temp_min);
-  currentTempLowElement.innerHTML = `${currentTempLow}°`;
+  //let currentTempHighElement = document.querySelector("#curr-high");
+  //let currentTempHigh = Math.round(position.data.main.temp_max);
+  // currentTempHighElement.innerHTML = `${currentTempHigh}°`;
+  //let currentTempLowElement = document.querySelector("#curr-low");
+  //let currentTempLow = Math.round(position.data.main.temp_min);
+  // currentTempLowElement.innerHTML = `${currentTempLow}°`;
   let feelsLikeElement = document.querySelector("#feels-like");
-  let feelsLike = Math.round(position.data.main.feels_like);
+  let feelsLike = Math.round(position.data.temperature.feels_like);
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
-  let humidity = position.data.main.humidity;
   let humidityElement = document.querySelector("#humidity");
+  let humidity = position.data.temperature.humidity;
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
+  let iconElement = document.querySelector("#today-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${position.data.condition.icon}.png`
+  );
+  iconElement.setAttribute("alt", position.data.condition.description);
 }
 function receiveCurrentPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let apiKey = "8cd9be374c7c96c39a9fe73f4bf2f055";
-  let apiUrlCurrent = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let apiKey = "o599f3bbe3f722tbacc3ebf3032624a0";
+  let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrlCurrent).then(changeToCurrentLocation);
 }
 function getCurrentLatitudeLongitude(event) {
