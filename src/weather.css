@@ -107,3 +107,11 @@ body {
   position: relative;
   bottom: 12px;
 }
+.active {
+  color: #405d2b;
+  text-decoration: none;
+}
+.active:hover {
+  color: #405d2b;
+  cursor: text;
+}

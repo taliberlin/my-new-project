@@ -47,7 +47,9 @@ function dateTime() {
 }
 function changeTemperature(response) {
   dateTime();
-  let currentTemperature = Math.round(response.data.temperature.current);
+  celsiusTemperature = Math.round(response.data.temperature.current);
+  celsiusFeelsLike = Math.round(response.data.temperature.feels_like);
+  let currentTemperature = celsiusTemperature;
   let temperatureElement = document.querySelector("#curr-temp");
   temperatureElement.innerHTML = `${currentTemperature}`;
   let currentConditions = response.data.condition.description;
@@ -62,7 +64,7 @@ function changeTemperature(response) {
   //let currentTempLow = Math.round(response.data.main.temp_min);
   // currentTempLowElement.innerHTML = `${currentTempLow}°`;
   let feelsLikeElement = document.querySelector("#feels-like");
-  let feelsLike = Math.round(response.data.temperature.feels_like);
+  let feelsLike = celsiusFeelsLike;
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
   let humidity = response.data.temperature.humidity;
   let humidityElement = document.querySelector("#humidity");
@@ -95,11 +97,13 @@ function searchCity(event) {
 }
 function changeToCurrentLocation(position) {
   dateTime();
+  celsiusTemperature = Math.round(position.data.temperature.current);
+  celsiusFeelsLike = Math.round(position.data.temperature.feels_like);
   let currentCityElement = document.querySelector("#city");
   let currentCity = position.data.city;
   currentCityElement.innerHTML = `${currentCity}`;
   let currentTempElement = document.querySelector("#curr-temp");
-  let currentTemp = Math.round(position.data.temperature.current);
+  let currentTemp = celsiusTemperature;
   currentTempElement.innerHTML = `${currentTemp}`;
   let currentConditionsElement = document.querySelector("#conditions");
   let currConditions = position.data.condition.description;
@@ -111,7 +115,7 @@ function changeToCurrentLocation(position) {
   //let currentTempLow = Math.round(position.data.main.temp_min);
   // currentTempLowElement.innerHTML = `${currentTempLow}°`;
   let feelsLikeElement = document.querySelector("#feels-like");
-  let feelsLike = Math.round(position.data.temperature.feels_like);
+  let feelsLike = celsiusFeelsLike;
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
   let humidityElement = document.querySelector("#humidity");
   let humidity = position.data.temperature.humidity;
@@ -134,6 +138,35 @@ function getCurrentLatitudeLongitude(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(receiveCurrentPosition);
 }
+function displayFahrenheit(event) {
+  event.preventDefault;
+  let currentTemperature = document.querySelector("#curr-temp");
+  currentTemperature.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
+  let feelsLike = document.querySelector("#feels-like");
+  let feelsLikeFahrenheit = Math.round((celsiusFeelsLike * 9) / 5 + 32);
+  feelsLike.innerHTML = `Feels like: ${feelsLikeFahrenheit}°`;
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+}
+function displayCelsius(event) {
+  event.preventDefault;
+  let currentTemperature = document.querySelector("#curr-temp");
+  currentTemperature.innerHTML = celsiusTemperature;
+  let feelsLike = document.querySelector("#feels-like");
+  feelsLike.innerHTML = `Feels like: ${celsiusFeelsLike}°`;
+  fahrenheit.classList.remove("active");
+  celsius.classList.add("active");
+}
+
+let celsiusTemperature = null;
+let celsiusFeelsLike = null;
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", displayFahrenheit);
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", displayCelsius);
+
 let searchBar = document.querySelector("#search-bar");
 searchBar.addEventListener("submit", searchCity);
 
