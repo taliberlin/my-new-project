@@ -4,6 +4,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
+
 .container {
   max-width: 80%;
 }
@@ -49,10 +50,10 @@ body {
   text-transform: capitalize;
 }
 .curr-day,
-.curr-high-low {
+.wind-speed {
   font-size: 18px;
 }
-.curr-h-l-feels-like {
+.feels-like-wind-speed {
   position: relative;
   bottom: 20px;
 }
