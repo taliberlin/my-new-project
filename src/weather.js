@@ -76,7 +76,6 @@ function changeTemperature(response) {
 function convertToCoords(response) {
   let latitude = response.data.coordinates.latitude;
   let longitude = response.data.coordinates.longitude;
-  let apiKey = "o599f3bbe3f722tbacc3ebf3032624a0";
   let apiUrlCoords = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrlCoords).then(changeTemperature);
 }
@@ -87,7 +86,6 @@ function searchCity(event) {
   if (cityInput.value === "" || cityInput.value === " ") {
     city.innerHTML = `Please enter city...`;
   } else {
-    let apiKey = "o599f3bbe3f722tbacc3ebf3032624a0";
     let apiUrlCity = `https://api.shecodes.io/weather/v1/forecast?query=${cityInput.value}&key=${apiKey}`;
     axios.get(apiUrlCity).then(convertToCoords);
   }
@@ -124,7 +122,6 @@ function changeToCurrentLocation(position) {
 function receiveCurrentPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let apiKey = "o599f3bbe3f722tbacc3ebf3032624a0";
   let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrlCurrent).then(changeToCurrentLocation);
 }
@@ -166,5 +163,9 @@ searchBar.addEventListener("submit", searchCity);
 
 let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("click", getCurrentLatitudeLongitude);
+
+let apiKey = "o599f3bbe3f722tbacc3ebf3032624a0";
+let apiUrlLoad = `https://api.shecodes.io/weather/v1/forecast?query=Vancouver&key=${apiKey}`;
+axios.get(apiUrlLoad).then(convertToCoords);
 
 dateTime();
