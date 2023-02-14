@@ -49,13 +49,12 @@ body {
 .conditions {
   text-transform: capitalize;
 }
-.curr-day,
-.wind-speed {
+.curr-day {
   font-size: 18px;
 }
 .feels-like-wind-speed {
   position: relative;
-  bottom: 20px;
+  bottom: 12px;
 }
 .conditions {
   font-size: 20px;
