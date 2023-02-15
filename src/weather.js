@@ -59,7 +59,7 @@ function changeTemperature(response) {
   city.innerHTML = response.data.city;
   let windSpeedElement = document.querySelector("#wind-speed");
   let windSpeed = response.data.wind.speed;
-  windSpeedElement.innerHTML = `Wind speed: ${Math.round(windSpeed)}km/h`;
+  windSpeedElement.innerHTML = `Wind speed: ${Math.round(windSpeed)} km/h`;
   let feelsLikeElement = document.querySelector("#feels-like");
   let feelsLike = celsiusFeelsLike;
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
@@ -105,7 +105,7 @@ function changeToCurrentLocation(position) {
   currentConditionsElement.innerHTML = `${currConditions}`;
   let windSpeedElement = document.querySelector("#wind-speed");
   let windSpeed = position.data.wind.speed;
-  windSpeedElement.innerHTML = `Wind speed: ${Math.round(windSpeed)}km/h`;
+  windSpeedElement.innerHTML = `Wind speed: ${Math.round(windSpeed)} km/h`;
   let feelsLikeElement = document.querySelector("#feels-like");
   let feelsLike = celsiusFeelsLike;
   feelsLikeElement.innerHTML = `Feels like: ${feelsLike}°`;
