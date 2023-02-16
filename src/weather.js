@@ -43,7 +43,7 @@ function dateTime() {
   today.innerHTML = `${month} ${date}, ${year}`;
 
   let time = document.querySelector("#time");
-  time.innerHTML = `${hours}:${minutes}`;
+  time.innerHTML = `Last updated: ${hours}:${minutes}`;
 }
 function changeTemperature(response) {
   dateTime();
