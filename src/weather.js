@@ -176,34 +176,6 @@ function getCurrentLatitudeLongitude(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(receiveCurrentPosition);
 }
-function displayFahrenheit(event) {
-  event.preventDefault;
-  let currentTemperature = document.querySelector("#curr-temp");
-  currentTemperature.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
-  let feelsLike = document.querySelector("#feels-like");
-  let feelsLikeFahrenheit = Math.round((celsiusFeelsLike * 9) / 5 + 32);
-  feelsLike.innerHTML = `Feels like: ${feelsLikeFahrenheit}°`;
-  celsius.classList.remove("active");
-  fahrenheit.classList.add("active");
-}
-function displayCelsius(event) {
-  event.preventDefault;
-  let currentTemperature = document.querySelector("#curr-temp");
-  currentTemperature.innerHTML = celsiusTemperature;
-  let feelsLike = document.querySelector("#feels-like");
-  feelsLike.innerHTML = `Feels like: ${celsiusFeelsLike}°`;
-  fahrenheit.classList.remove("active");
-  celsius.classList.add("active");
-}
-
-let celsiusTemperature = null;
-let celsiusFeelsLike = null;
-
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", displayFahrenheit);
-
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", displayCelsius);
 
 let searchBar = document.querySelector("#search-bar");
 searchBar.addEventListener("submit", searchCity);

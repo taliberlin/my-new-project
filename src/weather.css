@@ -4,7 +4,6 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
-
 .container {
   max-width: 80%;
 }
@@ -38,7 +37,6 @@ body {
   position: relative;
   bottom: 6px;
 }
-
 .city {
   font-weight: 900;
   font-size: 40px;
@@ -59,23 +57,19 @@ body {
 .conditions {
   font-size: 20px;
 }
-
 .city,
 .today-icon-conditions {
   text-align: center;
 }
-
 .temp {
   position: relative;
   top: 5px;
 }
-
 .curr-temp {
   font-size: 47px;
   position: relative;
   top: 25px;
 }
-
 .card {
   background: transparent;
   max-width: 70%;
@@ -90,7 +84,6 @@ body {
   font-weight: 900;
   background-color: transparent;
 }
-
 .forecast {
   font-size: 25px;
 }
