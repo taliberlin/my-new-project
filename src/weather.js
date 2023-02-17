@@ -149,6 +149,38 @@ function displayCelsius(event) {
   celsius.classList.add("active");
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <br /> 
+       <br />
+       <div class="col-5 weekday">${day}</div>
+       <div class="col-4">19° / 10°</div>
+       <div class="col-3">
+         <img
+          src= "https://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png" 
+           width= 50px
+           class="forecast-icon"/>
+       </div>
+       <br />
+       `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let celsiusTemperature = null;
 let celsiusFeelsLike = null;
 
@@ -169,3 +201,4 @@ let apiUrlLoad = `https://api.shecodes.io/weather/v1/forecast?query=Vancouver&ke
 axios.get(apiUrlLoad).then(convertToCoords);
 
 dateTime();
+displayForecast();
