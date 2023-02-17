@@ -76,10 +76,6 @@ body {
   top: 25px;
 }
 
-.today-icon-conditions {
-  font-size: 80px;
-}
-
 .card {
   background: transparent;
   max-width: 70%;
@@ -107,11 +103,11 @@ body {
 }
 .today-icon {
   position: relative;
-  bottom: 12px;
+  bottom: 15px;
 }
 .forecast-icon {
   position: relative;
-  bottom: 15px;
+  bottom: 12px;
 }
 .active {
   color: #405d2b;
