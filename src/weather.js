@@ -43,7 +43,7 @@ function dateTime() {
   today.innerHTML = `${month} ${date}, ${year}`;
 
   let time = document.querySelector("#time");
-  time.innerHTML = `Last updated: ${hours}:${minutes}`;
+  time.innerHTML = `${hours}:${minutes}`;
 }
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);

@@ -37,6 +37,9 @@ body {
   position: relative;
   bottom: 6px;
 }
+.last-updated {
+  font-size: 5px;
+}
 .city {
   font-weight: 900;
   font-size: 40px;
@@ -52,7 +55,7 @@ body {
 }
 .feels-like-wind-speed {
   position: relative;
-  bottom: 12px;
+  bottom: 1px;
 }
 .conditions {
   font-size: 20px;
@@ -61,6 +64,11 @@ body {
 .today-icon-conditions {
   text-align: center;
 }
+.city,
+.today-icon-conditions {
+  position: relative;
+  left: 7px;
+}
 .temp {
   position: relative;
   top: 5px;
@@ -68,7 +76,13 @@ body {
 .curr-temp {
   font-size: 47px;
   position: relative;
-  top: 25px;
+  top: 30px;
+}
+.temp-unit {
+  font-size: 20px;
+  position: relative;
+  top: 10px;
+  right: 2px;
 }
 .card {
   background: transparent;
@@ -77,7 +91,8 @@ body {
   border: transparent;
   text-align: center;
   position: relative;
-  bottom: 18px;
+  bottom: 22px;
+  right: 5px;
 }
 .card-header {
   text-align: center;
